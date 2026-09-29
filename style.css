@@ -15,7 +15,9 @@
   .app-shell{height:auto}
   .paper{width:210mm;height:297mm;min-height:0;padding:12mm 14mm;margin:0;box-shadow:none}
   .paper-head{height:25mm}
-  .problem-page{height:240mm;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr));gap:0 10mm;padding-top:3mm;align-content:stretch}
+  .paper-head{display:none}
+  .problem-page{position:relative;height:273mm;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr));gap:0 10mm;padding-top:25mm;align-content:stretch}
+  .problem-page::before{content:"四则混合运算练习    姓名：____________    日期：____________    计算所用时间：____________";position:absolute;top:0;left:0;right:0;height:18mm;border-bottom:1px solid #1e2c3b;font-family:"Microsoft YaHei",sans-serif;font-size:14px;font-weight:700;line-height:10mm;white-space:nowrap}
   .problem{min-height:0;height:auto;padding:2mm 0;font-size:17px;line-height:1.8}
   .work-space{height:18mm;margin:1mm 3mm 0 8mm}
   .problem-page{page-break-after:auto;break-after:auto}
