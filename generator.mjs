@@ -4,7 +4,8 @@ const randomInt = (min, max, random = Math.random) =>
 const precedence = { "+": 1, "-": 1, "×": 2, "÷": 2 };
 
 function leaf(digits, random) {
-  const min = 10 ** (digits - 1);
+  if (digits === "mixed23") digits = random() < 0.5 ? 2 : 3;
+  if (digits === "mixed23") digits = Math.random() < 0.5 ? 2 : 3; const min = 10 ** (digits - 1);
   const max = 10 ** digits - 1;
   return { type: "number", value: BigInt(randomInt(min, max, random)) };
 }
@@ -65,7 +66,7 @@ export function generateProblems(input, random = Math.random) {
     operations: [...input.operations], parentheses: Boolean(input.parentheses),
   };
   if (!Number.isInteger(settings.count) || settings.count < 10 || settings.count > 200 || settings.count % 10 !== 0) throw new Error("题量需为 10 的倍数（10 到 200 之间）");
-  if (!Number.isInteger(settings.digits) || settings.digits < 2 || settings.digits > 4) throw new Error("位数需在 2 到 4 之间");
+  if (settings.digits !== "mixed23" && (!Number.isInteger(settings.digits) || settings.digits < 2 || settings.digits > 4)) throw new Error("位数需在 2 到 4 之间，或选择混合模式");
   if (!Number.isInteger(settings.operatorCount) || settings.operatorCount < 2 || settings.operatorCount > 4) throw new Error("每题运算符需在 2 到 4 个之间");
   if (!settings.operations.length || settings.operations.some(op => !precedence[op])) throw new Error("请选择至少一种运算");
   const results = [];
