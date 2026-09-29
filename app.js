@@ -5,11 +5,30 @@ function render(items) {
   const pages = [];
   for (let start = 0; start < items.length; start += 10) {
     const group = items.slice(start, start + 10);
-    pages.push(`<div class="problem-page">${group.map((item, offset) => `<div class="problem"><div><span class="num">${start + offset + 1}.</span>${item.expression} = <span class="blank">____________</span></div><div class="work-space"></div></div>`).join("")}</div>`);
+    pages.push(`<div class="problem-page">${group.map((item, offset) => `<div class="problem"><div class="question"><span class="num">${start + offset + 1}.</span><span class="expression">${item.expression} = <span class="blank"></span></span></div><div class="work-space"></div></div>`).join("")}</div>`);
   }
   $("problems").innerHTML = pages.join("");
   $("answers").innerHTML = `<strong>参考答案</strong><br>${items.map((item, i) => `${i + 1}. ${item.answer}`).join("　　")}`;
+  fitExpressions();
 }
+
+// Measure the actual column width again after switching to print layout.
+function fitExpressions() {
+  document.querySelectorAll(".expression").forEach(node => {
+    node.style.fontSize = "";
+    node.style.whiteSpace = "nowrap";
+    let size = parseFloat(getComputedStyle(node).fontSize);
+    while (node.scrollWidth > node.clientWidth && size > 14) {
+      size = Math.max(14, size - 0.5);
+      node.style.fontSize = `${size}px`;
+    }
+    // Keep text readable: very long expressions wrap instead of shrinking further.
+    node.style.whiteSpace = "normal";
+  });
+}
+window.addEventListener("resize", fitExpressions);
+window.addEventListener("beforeprint", fitExpressions);
+window.addEventListener("afterprint", fitExpressions);
 
 function readSettings() {
   return { count: $("count").value, digits: $("digits").value, operatorCount: $("operatorCount").value, parentheses: $("parentheses").checked, operations: [...document.querySelectorAll("input[name=op]:checked")].map((node) => node.value) };
