@@ -20,4 +20,6 @@
   .work-space{height:18mm;margin:1mm 3mm 0 8mm}
   .problem-page{page-break-after:auto;break-after:auto}
   .problem-page:not(:last-child){page-break-after:always;break-after:page}
+  .answers.visible{display:block;page-break-before:always;break-before:page;min-height:273mm;padding:12mm 0 0;border-top:0;font-size:16px;line-height:2.1}
+  .paper:has(.answers.visible){height:auto;min-height:297mm}
 }
