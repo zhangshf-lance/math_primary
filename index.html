@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>四则运算题库生成器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header><div class="eyebrow">小学数学 · 练习纸工具</div><h1>四则运算题库生成器</h1><p>批量生成多位数混合运算，自动保证除法整除、减法结果非负。</p></header>
+    <section class="panel controls">
+      <div class="control-grid">
+        <label>题目数量<input id="count" type="number" min="10" max="200" step="10" value="30"></label>
+        <label>数字位数<select id="digits"><option value="2">两位数</option><option value="3" selected>三位数</option><option value="4">四位数</option></select></label>
+        <label>每题运算符<select id="operatorCount"><option value="2" selected>2 个</option><option value="3">3 个</option><option value="4">4 个</option></select></label>
+      </div>
+      <div class="row"><span class="label">运算类型</span><label class="check"><input type="checkbox" name="op" value="+" checked> 加法</label><label class="check"><input type="checkbox" name="op" value="-" checked> 减法</label><label class="check"><input type="checkbox" name="op" value="×" checked> 乘法</label><label class="check"><input type="checkbox" name="op" value="÷" checked> 除法</label></div>
+      <div class="row"><label class="check"><input id="parentheses" type="checkbox" checked> 随机加入括号</label><span class="hint">除法题会自动生成整除结果</span></div>
+      <div class="actions"><button id="generate" class="primary">生成题目</button><button id="print" class="secondary">打印并导出 PDF</button><button id="showAnswers" class="ghost">显示答案</button></div>
+      <div id="message" class="message" role="status"></div>
+    </section>
+    <section id="paper" class="paper"><div class="paper-head"><div><h2>四则混合运算练习</h2><div class="meta">姓名：____________　班级：____________　日期：____________</div></div><div class="score">得分：________</div></div><div id="problems" class="problems"></div><div id="answers" class="answers"></div></section>
+  </main>
+  <script src="generator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

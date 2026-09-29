@@ -1,0 +1,23 @@
+:root{font-family:"Segoe UI","Microsoft YaHei",sans-serif;color:#182230;background:#eef3f8}*{box-sizing:border-box}body{margin:0}.app-shell{max-width:1100px;margin:0 auto;padding:38px 24px 60px}header{margin-bottom:26px}.eyebrow{color:#3972a5;font-size:13px;font-weight:700;letter-spacing:.14em}h1{font-size:34px;margin:8px 0 6px;letter-spacing:-.03em}header p{color:#617084;margin:0}.panel{background:#fff;border:1px solid #dbe4ee;border-radius:18px;padding:22px;box-shadow:0 10px 30px #304c6812}.control-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}label{font-size:14px;color:#546274;font-weight:600}input[type=number],select{display:block;width:100%;margin-top:8px;border:1px solid #cfd9e4;border-radius:10px;padding:10px 12px;font:inherit;color:#182230;background:#fff}.row{display:flex;align-items:center;gap:18px;margin-top:18px;flex-wrap:wrap}.label{font-size:14px;color:#546274;font-weight:700}.check{display:flex;align-items:center;gap:7px;color:#273649;font-weight:500}.check input{accent-color:#3972a5}.hint{font-size:13px;color:#8090a2}.actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}button{border:0;border-radius:10px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer}.primary{background:#1f6fad;color:white}.secondary{background:#eaf2f9;color:#20577d}.ghost{background:#f1f4f7;color:#506174}.message{min-height:20px;margin-top:12px;color:#bd4b43;font-size:13px}.paper{margin-top:24px;background:#fff;min-height:900px;padding:42px 48px;border-radius:4px;box-shadow:0 10px 28px #304c6812}.paper-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #1e2c3b;padding-bottom:18px}.paper h2{margin:0 0 12px;font-size:26px}.meta{font-size:13px;color:#546274}.score{font-size:14px;color:#546274}.problems{display:grid;grid-template-columns:repeat(2,1fr);gap:0 54px;padding-top:14px}.problem{font-family:Georgia,"Times New Roman",serif;font-size:21px;line-height:2.4;border-bottom:1px dashed #d6dee7;white-space:nowrap}.problem .num{display:inline-block;width:32px;font-family:"Segoe UI",sans-serif;font-size:14px;color:#7c8997}.answers{display:none;margin-top:28px;border-top:2px solid #dde5ed;padding-top:18px;font-size:14px;line-height:1.9;color:#536274}.answers.visible{display:block}.answers strong{color:#1f6fad}@media(max-width:680px){.control-grid{grid-template-columns:1fr}.paper{padding:28px 20px}.problems{grid-template-columns:1fr;gap:0}.paper-head{display:block}.score{margin-top:10px}}
+@media print{body{background:#fff}.app-shell{padding:0;max-width:none}header,.controls{display:none}.paper{box-shadow:none;margin:0;padding:18mm 16mm;min-height:0}.paper h2{font-size:22px}.problems{gap:0 35px}.problem{font-size:17px;line-height:2.35}.answers.visible{display:none}}
+/* Ten questions per printable page with workspace for vertical calculations. */
+.problems{display:block}
+.problem-page{display:grid;grid-template-columns:repeat(2,1fr);gap:0 54px;padding-top:14px}
+.problem{min-height:112px;padding:5px 0}
+.work-space{height:55px;margin:2px 8px 0 32px;border-bottom:1px dotted #c7d1db}
+@media(max-width:680px){.problem-page{grid-template-columns:1fr;gap:0}}
+@media print{.problem-page{page-break-after:always;break-after:page;grid-template-columns:repeat(2,1fr);gap:0 35px}.problem-page:last-child{page-break-after:auto;break-after:auto}.problem{font-size:17px;line-height:2.35;min-height:105px}.work-space{height:48px}}
+@media print{.paper{width:100%;padding:12mm 14mm}.problem-page{height:245mm;align-content:start}.problem{min-height:46mm}.work-space{height:24mm}}
+@page{size:A4 portrait;margin:0}
+@media print{
+  html,body{width:210mm;min-height:297mm;background:#fff}
+  .app-shell{width:210mm;margin:0;padding:0}
+  .app-shell{height:auto}
+  .paper{width:210mm;height:297mm;min-height:0;padding:12mm 14mm;margin:0;box-shadow:none}
+  .paper-head{height:25mm}
+  .problem-page{height:240mm;grid-template-columns:1fr 1fr;grid-template-rows:repeat(5,1fr);gap:0 10mm;padding-top:3mm;align-content:stretch}
+  .problem{min-height:0;height:auto;padding:2mm 0;font-size:17px;line-height:1.8}
+  .work-space{height:18mm;margin:1mm 3mm 0 8mm}
+  .problem-page{page-break-after:auto;break-after:auto}
+  .problem-page:not(:last-child){page-break-after:always;break-after:page}
+}
